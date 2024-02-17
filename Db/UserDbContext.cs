@@ -9,6 +9,7 @@ public class UserDbContext : DbContext {
 
   private IConfiguration _configuration;
   public DbSet<Users> Users { get; set; }
+  public DbSet<Transactions> Transactions { get; set; }
 
   public UserDbContext(IConfiguration configuration, DbContextOptions options) : base(options)
   {

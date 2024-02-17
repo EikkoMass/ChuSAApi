@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ChuSAApi.db;
 using ChuSAApi.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChuSAApi.Controllers;
 
@@ -41,25 +42,32 @@ public class AccountController : ControllerBase
     [HttpPut]
     public IActionResult UpdateAccount(Users user)
     {
-        _db.Users.Update(user);
-        _db.SaveChanges();
-        
-        return Ok(user);
+        try
+        {
+            _db.Users.Update(user);
+            _db.SaveChanges();
+
+            return Ok(user);
+        }
+        catch (DbUpdateConcurrencyException error)
+        {
+            return NotFound("Nao foi possivel encontrar a conta desejada");
+        }
     }
     
     [HttpDelete(ApiRoutes.Account.DeleteById)]
     public IActionResult RemoveAccountById(int id)
     {
-        //TODO verificar se registro do id existe antes de tentar remover
-        // if (_db.Users.Find(id) == null)
-        // {
-        //     return NotFound("Nao foi encontrado o conta pelo id");
-        // }
-        
-        var user = new Users() { Id = id };
-        _db.Users.Remove(user);
-        _db.SaveChanges();
+        try {
+            var user = new Users() { Id = id };
+            _db.Users.Remove(user);
+            _db.SaveChanges();
 
-        return Ok("conta deletada com sucesso");
+            return Ok("conta deletada com sucesso");
+        }
+        catch (DbUpdateConcurrencyException error)
+        {
+            return NotFound("Nao foi possivel encontrar a conta desejada");
+        }
     }
 }
