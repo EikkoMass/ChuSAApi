@@ -10,7 +10,7 @@ namespace ChuSAApi.Controllers;
 public class AccountController : ControllerBase
 {
     private readonly ILogger<AccountController> _logger;
-    private UserDbContext _db;
+    private readonly UserDbContext _db;
 
     public AccountController(ILogger<AccountController> logger, UserDbContext context)
     {
@@ -18,14 +18,14 @@ public class AccountController : ControllerBase
         _db = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    [HttpGet(Name = "GetAccount")]
-    public IActionResult GetAccounts()
+    [HttpGet]
+    public IActionResult Get()
     {
         return  Ok(_db.Users.ToList());
     }
     
     [HttpPost]
-    public IActionResult AddNewAccount(Users user)
+    public IActionResult AddNew(Users user)
     {
         var users = _db.Users.Add(user);
         _db.SaveChanges();
@@ -33,14 +33,14 @@ public class AccountController : ControllerBase
         return Ok(users.Entity);
     }
     
-    [HttpGet(ApiRoutes.Account.FindById)]
-    public IActionResult GetAccountById(int id)
+    [HttpGet(ApiRoutes.FindById)]
+    public IActionResult FindById(int id)
     {
         return Ok(_db.Users.Find(id));
     }
     
     [HttpPut]
-    public IActionResult UpdateAccount(Users user)
+    public IActionResult Update(Users user)
     {
         try
         {
@@ -55,8 +55,8 @@ public class AccountController : ControllerBase
         }
     }
     
-    [HttpDelete(ApiRoutes.Account.DeleteById)]
-    public IActionResult RemoveAccountById(int id)
+    [HttpDelete(ApiRoutes.DeleteById)]
+    public IActionResult RemoveById(int id)
     {
         try {
             var user = new Users() { Id = id };

@@ -10,7 +10,7 @@ namespace ChuSAApi.Controllers;
 public class TransactionController : ControllerBase
 {
     private readonly ILogger<TransactionController> _logger;
-    private UserDbContext _db;
+    private readonly UserDbContext _db;
 
     public TransactionController(ILogger<TransactionController> logger, UserDbContext context)
     {
@@ -19,34 +19,36 @@ public class TransactionController : ControllerBase
     }
 
     [HttpGet(Name = "GetTransaction")]
-    public IActionResult GetTransactions()
+    public IActionResult Get()
     {
         return  Ok(_db.Transactions.ToList());
     }
     
     [HttpPost]
-    public IActionResult AddNewTransaction(Transactions user)
+    public IActionResult AddNew(Transactions transaction)
     {
-        var transactions = _db.Transactions.Add(user);
+        var transactions = _db.Transactions.Add(transaction);
         _db.SaveChanges();
 
+        //TODO ao fazer uma transacao, alterar o valor da conta dos usuarios correspondentes
+        
         return Ok(transactions.Entity);
     }
     
-    // [HttpGet(ApiRoutes.Account.FindById)]
-    // public IActionResult GetAccountById(int id)
-    // {
-    //     return Ok(_db.Transactions.Find(id));
-    // }
+    [HttpGet(ApiRoutes.FindById)]
+    public IActionResult FindById(int id)
+    {
+        return Ok(_db.Transactions.Find(id));
+    }
     
     [HttpPut]
-    public IActionResult UpdateAccount(Transactions transactions)
+    public IActionResult Update(Transactions transaction)
     {
         try {
-            _db.Transactions.Update(transactions);
+            _db.Transactions.Update(transaction);
             _db.SaveChanges();
             
-            return Ok(transactions);
+            return Ok(transaction);
         }
         catch (DbUpdateConcurrencyException error)
         {
@@ -54,8 +56,8 @@ public class TransactionController : ControllerBase
         }
     }
     
-    [HttpDelete(ApiRoutes.Account.DeleteById)]
-    public IActionResult RemoveAccountById(int id)
+    [HttpDelete(ApiRoutes.DeleteById)]
+    public IActionResult RemoveById(int id)
     {
         try
         {
