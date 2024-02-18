@@ -14,8 +14,8 @@ var connectionString = builder.Configuration.GetConnectionString("AppDbConnectio
 
 builder.Services.AddDbContext<UserDbContext>(options => options.UseMySQL(connectionString));
 
-
-//builder.Services.AddResponseCaching();
+builder.Services.AddMemoryCache();
+builder.Services.AddResponseCaching();
 
 var app = builder.Build();
 
@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
 
 // app.UseHttpsRedirection();
 
-//app.UseResponseCaching();
+app.UseResponseCaching();
 
 app.UseAuthorization();
 

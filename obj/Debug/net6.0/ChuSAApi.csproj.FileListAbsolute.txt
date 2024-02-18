@@ -59,3 +59,8 @@
 /home/eikkomass/Dev/workspaces/asp/ChuSAApi/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
 /home/eikkomass/Dev/workspaces/asp/ChuSAApi/bin/Debug/net6.0/MySql.EntityFrameworkCore.dll
 /home/eikkomass/Dev/workspaces/asp/ChuSAApi/bin/Debug/net6.0/BouncyCastle.Cryptography.dll
+/home/eikkomass/Dev/workspaces/asp/ChuSAApi/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+/home/eikkomass/Dev/workspaces/asp/ChuSAApi/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/eikkomass/Dev/workspaces/asp/ChuSAApi/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+/home/eikkomass/Dev/workspaces/asp/ChuSAApi/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+/home/eikkomass/Dev/workspaces/asp/ChuSAApi/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
