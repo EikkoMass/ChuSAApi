@@ -45,7 +45,7 @@ tendo sido instalado por docker a partir do comando:
 Os arquivos com a modelagem DER do banco e script de importacao se encontram em: **Resources/db/<arquivos\>**, caso deseje rodar o script, o banco pode ser acessado
 pelo mysql-workbench (que se encontra no [site oficial do projeto](https://dev.mysql.com/downloads/workbench/) ou no [repositorio oficial do Arch Linux](https://archlinux.org/packages/extra/x86_64/mysql-workbench/)) ou pode ser acessar pelo terminal (nesse caso sendo necessario [copiar o script para dentro do container](https://docs.docker.com/engine/reference/commandline/container_cp/) e rodar internamente, ou pelo comando do proprio docker)
 
-> mysql -u<USUARIO-AQUI> -p < caminho1/caminho2/meuScript.sql
+> mysql -u<USUARIO-AQUI\> -p < caminho1/caminho2/meuScript.sql
 
 ### Integracao Projeto + Banco de Dados
 
