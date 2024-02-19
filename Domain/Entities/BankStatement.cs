@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ChuSAApi.Domain.Entities;
 
 [Keyless]
-[Table("statements")]
+[Table("Statements")]
 public class BankStatement
 {
     public string toUserName { get; set; }

@@ -74,6 +74,9 @@ public class AccountController : ControllerBase
     [HttpDelete(ApiRoutes.DeleteById)]
     public IActionResult RemoveById(int id)
     {
+        /* A nivel de regra de negocio apenas faria sentido uma exclusao de usuario caso ele nao tenha transacoes associadas ao mesmo,
+         ja que transacoes funcionam como registro de historico */        
+        
         try {
             var user = new Users() { Id = id };
             _db.Users.Remove(user);
