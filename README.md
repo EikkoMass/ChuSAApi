@@ -40,7 +40,7 @@ Foram instalados a partir do gerenciador de pacotes oficial do Arch Linux
 
 Foi utilizado MySql para a criacao do projeto por conta de melhor familizariazao com o mesmo, 
 tendo sido instalado por docker a partir do comando:
-> docker run --ulimit nofile=1048576 -e MYSQL_ROOT_PASSWORD=**<SUA-SENHA-AQUI>** -p 3306:3306 --name **<NOME-DO-CONTAINER>** -d mysql:8.3.0
+> docker run --ulimit nofile=1048576 -e MYSQL_ROOT_PASSWORD=**<SUA-SENHA-AQUI\>** -p 3306:3306 --name **<NOME-DO-CONTAINER\>** -d mysql:8.3.0
 
 Os arquivos com a modelagem DER do banco e script de importacao se encontram em: **Resources/db/<arquivos\>**, caso deseje rodar o script, o banco pode ser acessado
 pelo mysql-workbench (que se encontra no [site oficial do projeto](https://dev.mysql.com/downloads/workbench/) ou no [repositorio oficial do Arch Linux](https://archlinux.org/packages/extra/x86_64/mysql-workbench/)) ou pode ser acessar pelo terminal (nesse caso sendo necessario [copiar o script para dentro do container](https://docs.docker.com/engine/reference/commandline/container_cp/) e rodar internamente, ou pelo comando do proprio docker)
